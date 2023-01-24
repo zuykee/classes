@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "just-validate": "^3.10.0",
+    "just-validate-plugin-date": "^1.2.0"
+  }
+}

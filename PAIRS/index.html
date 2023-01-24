@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer type="module" src="./main.js"></script>
+    <style>
+
+        .header {
+            display:flex;
+            justify-content: space-around;
+        }
+
+        .timer {
+            padding: 20px;
+            color: #000;
+            font-size:18px;
+
+        }
+
+        .field-size {
+            padding-top:20px;
+        }
+
+        .card-container {
+            width:5vw;
+            height:6vh;
+            
+            position:relative;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card-source {
+            position:absolute;
+            width:5vw;
+            height:6vh;             
+            color:#000;
+            text-align: center;
+            line-height:1;
+            
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            font-size:3vw;
+            text-align:center;
+        }
+        .card-cover {
+           
+            background: radial-gradient(circle,
+             rgba(233,191,7,1) 2%,
+             rgba(227,153,15,1) 36%, 
+             rgba(0,0,0,1) 100%);
+             pointer-events: none;
+            
+             
+            
+        }
+
+        .card-face {
+            
+            background-color: gray;
+            transform: rotateY(180deg);
+            pointer-events: none;
+            
+
+        }
+
+        .is-flipped {
+        transform: rotateY(180deg);
+}
+        .main {
+            margin: 0 auto;
+        }
+
+        .field-container {
+            
+            padding: 0 20px;
+            width:100%;
+            display: grid;
+            grid-auto-rows: minmax(50px,auto);
+            grid-gap:10px;
+            justify-content:center;
+            
+        }
+
+        .solved {
+           
+            transform: rotateY(180deg);
+               
+        }
+
+        .solved div:first-child {
+            transition: background-color 1s;
+            background-color: green;
+        }
+
+       
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="timer"></div>
+        <form action="" class="field-size">
+
+            <input type="text" size="24" class="input" placeholder="enter rows and cols count (2-10)">
+            <button  class="btn">PLAY</button>
+        </form>
+    </header>
+    <main class="main">
+        <div class="field-container"></div>
+   
+</main>
+</div>
+</div>
+</body>
+</html>

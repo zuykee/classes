@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+    <style>
+        section { display: grid; grid-template-columns: 100px 1fr 1fr 250px; grid-template-rows: 50px 1fr 1fr; } section header { grid-column: 1 / 4; grid-row: 1; } section nav { grid-column: 1; grid-row: 2 / 3; } section article { grid-column: 2; grid-row: 2; } section aside { grid-column: 3; grid-row: 2; } section footer { grid-column: 1 / 4; grid-row: 3; }
+
+
+        .header {
+            padding:25px;
+        }
+
+        
+
+       
+
+        .new-record {
+            position:relative;
+        }
+
+        /* .record-part {padding: 20px;display: flex;flex-wrap: wrap;flex-direction: column;} */
+
+        .input-header {
+            margin-left:15px;
+        }
+
+        .btn-reset {
+            margin-top: 23px;
+        }
+
+        /* .table-header, .table-row {
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            justify-content:center;
+            } */
+
+        /* .table-field {
+            border:1px solid black;
+            font-size:18px;
+            padding-left:10px;
+        } */
+
+        .options-btn {
+            width: 1.2em;
+            height:1.2em;
+            
+        }
+
+        .form-btn {
+            margin-left: 15px;
+        }
+
+        .options {
+            padding:5px 0 10px 15px;
+            
+        }
+
+        .header-field {
+            font-weight:700;
+            
+        }
+
+        .filters {
+            padding:20px 30px;
+        }
+
+        .filters-header {
+            font-size:18px;
+            font-weight:700;
+            display:block;
+            padding-left:15px;
+            
+        }
+
+        .label-content {
+            font-size:20px;
+            margin-right: 10px;
+        }
+
+        
+
+    </style>
+    <title>Document</title>
+   
+    <script src="https://unpkg.com/just-validate-plugin-date@latest/dist/just-validate-plugin-date.production.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+    
+    <script defer type="module" src="script.js"></script>
+    <script>
+        
+    </script>
+
+</head>
+<body>
+    <header class="header">
+      
+        
+        <form id="form" action="#" class="new-record">
+            <div class="record-part row input-group col-lg-9 mb-xl-4">
+                <span class="input-header input-group-text">ФИО</span>
+                <input id="surname" type="text" size="25" class="form-control input surname-input">
+                <input id="name" type="text"  size="25" class="form-control input name-input">
+                <input id="mid-name" type="text"  size="25" class="form-control input midname-input">
+            </div>
+            <div class="row col-md-12 ">
+            <div class="record-part col-lg-3 input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Дата рождения</span>
+                <input id="birth-date" type="date" class="form-control input birthdate-input">
+            </div>
+
+            <div class="record-part col-lg-3 input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Год начала обучения</span>
+                <input id="admission" type="number" class="form-control input admission-input">
+            </div>
+
+            <div class="record-part col-lg-3 input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Факультет</span>
+                <input id="faculty" type="text" class="form-control input faculty-input">
+            </div>
+        </div>  
+            <button type="submit " class="btn-lg btn-primary btn-reset form-btn">Добавить запись</button>
+       </form>
+    </header>
+    <main class="main">
+        <div class="filters">
+            <span class="filters-header">Фильтры(укажите условия поиска)</span>
+           <div class="options form-check form-check-inline">
+            <input type="radio" name="option" id="radio-name" data-filter="name" class="form-check-input mb-1 options-btn"><label for="radio-name" class="label-content">ФИО&nbsp;</label>
+            <input type="radio" name="option" checked id="radio-faculty" data-filter="faculty" class="form-check-input mb-1 options-btn"><label for="radio-faculty" class="label-content">Факультет&nbsp;</label>
+            <input type="radio" name="option" id="radio-start" data-filter="start-studying" class="form-check-input mb-1 options-btn"><label for="radio-start" class="label-content">Начало обучения&nbsp;</label>
+            <input type="radio" name="option" id="radio-end" data-filter="end-studying" class="form-check-input mb-1 options-btn"><label for="radio-end" class="label-content">Конец обучения&nbsp;</label>
+           </div>
+           <div class="filters-elements col-sm-3">
+            <input type="text" placeholder="Введиле значение для поиска" class="form-control filters-text">
+            
+           </div>
+        </div>
+        <table class="table-container table table-striped table-hover">
+            <thead class="table-header">
+                <tr>
+                <td data-column="name" class="header-field table-field name-field">ФИО</td>
+                <td data-column="faculty" class="header-field table-field faculty-field">Факультет</td>
+                <td data-column="birthDate" class="header-field table-field age-field">ДР и возраст</td>
+                <td data-column="studying" class="header-field table-field studying-field">Годы обучения</td>
+            </tr>
+            </thead>
+           
+            <tbody class="records-container"></tbody>
+        </table>
+    </main>
+
+
+
+</body>
+</html>
